@@ -1,29 +1,32 @@
 import Card from '../Card';
 import './styles.css';
-import { images, Image } from '../Data'
+import { Image } from '../Data'
+
+type Props = {
+	images: Image[];
+	visibleItems: number[];
+	finishedItems: number[];
+}
 
 const animationDuration = '0.8s'
 const transform = 'rotateY(180deg)'
 const cursor = 'default'
 
-// списки выделенных и отгаданных карточек для отладки
-const visibleItems = ['hX_hf2lPpUU', '3tYZjGSBwbk'];
-const finishedItems = ['YdAqiUkUoWA', 'YdAqiUkUoWA1', 'w1JE5duY62M', 'w1JE5duY62M1'];
+function App({ images, visibleItems, finishedItems }: Props) {
 
-function App() {
 	return (
 		<>
 			<section className="game container">
-				<ul className="cards cards-theme-cars">
+				<ul className="cards">
 
-					{images.map((image: Image) => (
+					{images.map((item: Image) => (
 
 						<Card
-							key={image.id}
-							url={image.url}
-							description={image.description}
-							isSelected={visibleItems.includes(image.id)}
-							isGuessed={finishedItems.includes(image.id)}
+							key={item.id}
+							url={item.url}
+							description={item.description}
+							isVisible={visibleItems.includes(parseInt(item.id, 10))}
+							isFinished={finishedItems.includes(parseInt(item.id, 10))}
 							animationDuration={animationDuration}
 							transform={transform}
 							cursor={cursor}
