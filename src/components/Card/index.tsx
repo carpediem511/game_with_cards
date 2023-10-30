@@ -1,17 +1,31 @@
+import { useState } from "react"
+
 type Props = {
 
 	url: string
 	description: string
-	isVisible: boolean
+
 	isFinished: boolean
 	animationDuration: string
 	transform: string
-	cursor: string
+	onClick: () => void
 }
 
-const Card = ({ url, description, isVisible, isFinished, animationDuration, transform, cursor }: Props) => {
+const Card = ({ url, description, isFinished, animationDuration, transform, onClick }: Props) => {
 
-	const className = `${isVisible ? 'card-show' : ''
+
+
+	const backImageUrl = "/img/back-cats.svg"
+
+	const [isOpenCard, setIsOpenCard] = useState<boolean>(false)
+
+	const handleClick = () => {
+		if (!isFinished) {
+			setIsOpenCard(!isOpenCard);
+			onClick();
+		}
+	};
+	const className = `${isOpenCard ? 'card-show' : ''
 		} ${isFinished ? 'card-finished' : ''
 		}`;
 
@@ -19,10 +33,24 @@ const Card = ({ url, description, isVisible, isFinished, animationDuration, tran
 
 		<>
 			<li
-				className={`card ${className}`} style={{ transition: `transform ${animationDuration}` }}
+				className={`card ${className}`}
+				style={{
+					transition: `transform ${animationDuration}`,
+					backgroundImage: isOpenCard ? `url(${backImageUrl})` : "none",
+				}}
+				onClick={handleClick}
 			>
-				<img src={url} width="204" height="144" alt={description} style={{ transform, backfaceVisibility: 'hidden' }} />
-
+				{isOpenCard ? (
+					<img
+						src={url}
+						width="204"
+						height="144"
+						alt={description}
+						style={{ transform, backfaceVisibility: "hidden" }}
+					/>
+				) : (
+					<div className="card-back"></div>
+				)}
 			</li>
 		</>
 	)

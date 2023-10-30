@@ -8,12 +8,12 @@ const root = ReactDOM.createRoot(
 	document.getElementById('root') as HTMLElement
 )
 
-const visibleItems: number[] = []
+
 const finishedItems: number[] = []
 
 root.render(
 	<React.StrictMode>
-		<App images={images} visibleItems={visibleItems} finishedItems={finishedItems} />
+		<App images={images} finishedItems={finishedItems} />
 	</React.StrictMode>
 );
 
