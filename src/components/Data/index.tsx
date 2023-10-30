@@ -1,56 +1,56 @@
 type Image = {
 
-	id: string
+	id: number
 	url: string
 	description: string
 }
 
 const images: Image[] = [{
-	id: 'YdAqiUkUoWA',
+	id: 1,
 	url: './img/cats-1.jpg',
 	description: 'pink petaled flower',
 }, {
-	id: 'hX_hf2lPpUU',
+	id: 2,
 	url: './img/cats-2.jpg',
 	description: 'green leaf',
 }, {
-	id: 'w1JE5duY62M',
+	id: 3,
 	url: './img/cats-3.jpg',
 	description: 'red and white petaled flower close-up photography',
 }, {
-	id: '3tYZjGSBwbk',
+	id: 4,
 	url: './img/cats-4.jpg',
 	description: 'white daisy in bloom during daytime',
 }, {
-	id: 'NoXUQ54pDac',
+	id: 5,
 	url: './img/cats-5.jpg',
 	description: 'white-and-pink flowers',
 }, {
-	id: 'OZhYgZh0bAg',
+	id: 6,
 	url: './img/cats-6.jpg',
 	description: 'white and purple flower petals',
 }, {
-	id: 'YdAqiUkUoWA1',
+	id: 7,
 	url: './img/cats-1.jpg',
 	description: 'pink petaled flower',
 }, {
-	id: 'hX_hf2lPpUU1',
+	id: 8,
 	url: './img/cats-2.jpg',
 	description: 'green leaf',
 }, {
-	id: 'w1JE5duY62M1',
+	id: 9,
 	url: './img/cats-3.jpg',
 	description: 'red and white petaled flower close-up photography',
 }, {
-	id: '3tYZjGSBwbk1',
+	id: 10,
 	url: './img/cats-4.jpg',
 	description: 'white daisy in bloom during daytime',
 }, {
-	id: 'NoXUQ54pDac1',
+	id: 11,
 	url: './img/cats-5.jpg',
 	description: 'white-and-pink flowers',
 }, {
-	id: 'OZhYgZh0bAg1',
+	id: 12,
 	url: './img/cats-6.jpg',
 	description: 'white and purple flower petals',
 }];

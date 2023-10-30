@@ -4,14 +4,15 @@ type Props = {
 
 	url: string
 	description: string
-
+	id: number
 	isFinished: boolean
 	animationDuration: string
 	transform: string
-	onClick: () => void
+	onCardClick: (id: number) => void;
+
 }
 
-const Card = ({ url, description, isFinished, animationDuration, transform, onClick }: Props) => {
+const Card = ({ url, description, id, isFinished, animationDuration, transform, onCardClick }: Props) => {
 
 
 
@@ -20,11 +21,13 @@ const Card = ({ url, description, isFinished, animationDuration, transform, onCl
 	const [isOpenCard, setIsOpenCard] = useState<boolean>(false)
 
 	const handleClick = () => {
-		if (!isFinished) {
-			setIsOpenCard(!isOpenCard);
-			onClick();
-		}
+		// Передаем идентификатор карточки родительскому компоненту в колбэке.
+		// Родительский компонент обновит свое состояние и карточка получит его в параметре.
+
+		setIsOpenCard(!isOpenCard);
+
 	};
+
 	const className = `${isOpenCard ? 'card-show' : ''
 		} ${isFinished ? 'card-finished' : ''
 		}`;

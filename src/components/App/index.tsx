@@ -18,16 +18,26 @@ function App({ images, finishedItems }: Props) {
 	const [selectedCard, setSelectedCard] = useState<string[]>([])
 	const [count, setCount] = useState<number>(0)
 
+	const checkItems = () => setCount((i) => i + 1)
 
-
-	const handleClick = (id: string) => {
-
-		if (!selectedCard.includes(id) && !finishedItems.includes(parseInt(id, 10))) {
-
-			setSelectedCard((prevSelectedCard) => [...prevSelectedCard, id])
-			setCount((prevCount) => prevCount + 1)
+	// Объявляем один обработчик клика для всех карточек,
+	// а чтобы обработчик «узнал», на какой карточке произошло событие,
+	// передадим ему идентификатор карточки в параметре.
+	const handleCardClick = (id: any) => {
+		// Игнорируем повторные клики по выбранным карточкам,
+		// проверяем идентификатор по спискам.
+		if (finishedItems.includes(id) || selectedCard.includes(id)) {
+			return;
 		}
-	}
+		// Сообщение родительскому компоненту будем передавать в колбэке через параметры (но пока ничего не передаём).
+		checkItems();
+		// Добавляем идентификатор в список выбранных.
+		// Для вычисления нового состояния используем функцию обновления.
+		// Создаем новый массив из копии текущего и добавляем элемент.
+		setSelectedCard((items) => [...items, id]);
+	};
+
+
 
 	return (
 		<>
@@ -41,11 +51,13 @@ function App({ images, finishedItems }: Props) {
 							key={item.id}
 							url={item.url}
 							description={item.description}
+							id={item.id}
 
-							isFinished={finishedItems.includes(parseInt(item.id, 10))}
+							isFinished={finishedItems.includes(item.id)}
+							onCardClick={handleCardClick}
 							animationDuration={animationDuration}
 							transform={transform}
-							onClick={() => handleClick(item.id)}
+
 						/>
 					))}
 
