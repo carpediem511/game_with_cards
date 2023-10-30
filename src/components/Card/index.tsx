@@ -23,8 +23,9 @@ const Card = ({ url, description, id, isFinished, animationDuration, transform, 
 	const handleClick = () => {
 		// Передаем идентификатор карточки родительскому компоненту в колбэке.
 		// Родительский компонент обновит свое состояние и карточка получит его в параметре.
-
-		setIsOpenCard(!isOpenCard);
+		onCardClick(id);
+		// Обновляем состояние открытости карточки
+		setIsOpenCard(true);
 
 	};
 
