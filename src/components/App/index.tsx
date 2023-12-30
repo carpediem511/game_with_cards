@@ -17,6 +17,7 @@ function App({ images, finishedItems }: Props) {
 
 	const [selectedCard, setSelectedCard] = useState<string[]>([])
 	const [count, setCount] = useState<number>(0)
+	const [guessedCard, setGuessedCard] = useState<number>()
 
 	const checkItems = () => setCount((i) => i + 1)
 
@@ -33,7 +34,16 @@ function App({ images, finishedItems }: Props) {
 		// Добавляем идентификатор в список выбранных.
 		// Для вычисления нового состояния используем функцию обновления.
 		// Создаем новый массив из копии текущего и добавляем элемент.
-		setSelectedCard((items) => [...items, id]);
+		setSelectedCard((items) => [...items, id])
+
+		switch (selectedCard.length) {
+
+			case 0:
+				setSelectedCard([id])
+				break
+			default:
+				setSelectedCard([])
+		}
 	};
 
 
