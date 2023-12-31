@@ -39,7 +39,7 @@ const GamePage = ({ cards, showResults, gameTheme }: GameProps) => {
 				</div>
 				<p className="progress-description">Открыто {halfFinishedCards} / {maxStepsCount}</p>
 				<div className="steps">Шаг {stepsCount}</div>
-				<Cards cards={cards} gameTheme={gameTheme} finishedCards={finishedCards} checkCards={checkCards} />
+				<Cards cards={cards} gameTheme={gameTheme} finishedCards={finishedCards.map(card => card.id)} checkCards={checkCards} />
 				{isWin && (
 					<div className="modal">
 						<div className="modal-box">

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Data, gameTypes } from '../Data';
+import { Data, gameTypes, GameType, Result, getCards, results } from '../Data';
 import './../../index.css';
 import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import StartPage from '../StartPage';
@@ -8,14 +8,14 @@ import ResultsPage from '../ResultsPage';
 
 type AppProps = {
 	getCards: (type: number) => Data[],
-	results: { name: string, stepsCount: number }[]
+	results: Result[]
 }
 
 function App({ getCards, results }: AppProps) {
 
 	const [gameTheme, setGameTheme] = useState<string>('')
 	const [cards, setCards] = useState<Data[]>([])
-	const [result, setResult] = useState<number>(0)
+	const [gameResult, setGameResult] = useState<number>(0)
 	const navigate = useNavigate()
 
 	const handleStart = (type: string): void => {
@@ -25,9 +25,9 @@ function App({ getCards, results }: AppProps) {
 		setCards(selectedTheme)
 	}
 
-	const showResults = (stepsCount: number) => {
-		setResult(stepsCount)
-		navigate('/results')
+	const showResults = (steps: number) => {
+		setGameResult(steps)
+		navigate('/result')
 	}
 
 	const handleRestart = () => {
@@ -36,13 +36,12 @@ function App({ getCards, results }: AppProps) {
 
 	return (
 		<>
-			<BrowserRouter>
-				<Routes>
-					<Route path='/' element={<StartPage setGameTheme={setGameTheme} handleStart={handleStart} />} />
-					<Route path='/game/:gameTheme' element={<GamePage cards={cards} gameTheme={gameTheme} showResults={showResults} />} />
-					<Route path='/result' element={<ResultsPage stepsCount={result} onResetGame={handleRestart} results={results} />} />
-				</Routes>
-			</BrowserRouter>
+			<Routes>
+				<Route path='/' element={<StartPage setGameTheme={setGameTheme} handleStart={handleStart} />} />
+				<Route path='/game/:gameTheme' element={<GamePage cards={cards} gameTheme={gameTheme} showResults={showResults} />} />
+				<Route path='/result' element={<ResultsPage gameResult={gameResult} onResetGame={handleRestart} results={results} />} />
+			</Routes>
+
 		</>
 	)
 }

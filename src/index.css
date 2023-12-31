@@ -64,7 +64,7 @@ body {
 }
 
 .ico-button {
-  padding: 16px 24px 16px 56px;
+  padding: 16px;
   font-family: inherit;
   font-weight: 700;
   font-size: 16px;
@@ -75,8 +75,6 @@ body {
   border-radius: 10px;
   cursor: pointer;
   box-sizing: border-box;
-  background-position: left 24px center;
-  background-repeat: no-repeat;
 }
 
 .ico-button:hover {
@@ -85,18 +83,6 @@ body {
 
 .ico-button:active {
   background-color: #ffd97c;
-}
-
-.ico-button-cats {
-  background-image: url("../public/img/back-cats.svg");
-}
-
-.ico-button-forKids {
-  background-image: url("../public/img/back-forKids.svg");
-}
-
-.ico-button-parrots {
-  background-image: url("../public/img/back-parrots.svg");
 }
 
 .rules {

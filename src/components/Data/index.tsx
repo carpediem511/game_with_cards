@@ -6,6 +6,9 @@ type Data = {
 	description: string
 }
 
+type Result = { name: string; steps: string };
+type GameType = { type: string; text: string };
+
 // карточки сгруппированы по темам картинок
 // в наборах карточки указаны в одном экземпляре
 // парные карточки нужно сгенерировать
@@ -90,18 +93,18 @@ const forKids: Data[] = [{
 
 const cardsCollection = [cats, parrots, forKids]
 
-const results = [
-	{ name: "Мальвина", stepsCount: 5 },
-	{ name: "Дмитрий", stepsCount: 3 },
-	{ name: "Александр", stepsCount: 2 },
-	{ name: "Матвей", stepsCount: 4 },
-	{ name: "Павел", stepsCount: 4 },
-	{ name: "Ольга", stepsCount: 1 },
+const results: Result[] = [
+	{ name: "Мальвина", steps: '5' },
+	{ name: "Дмитрий", steps: '3' },
+	{ name: "Александр", steps: '2' },
+	{ name: "Матвей", steps: '4' },
+	{ name: "Павел", steps: '4' },
+	{ name: "Ольга", steps: '1' },
 ];
 
 // функция для доступа к данным из приложения
 // принимает в параметре название набора данных
-const getCards = (type: number) => {
+const getCards = (type: number): Data[] => {
 	// Берем набор картинок по индексу и делаем копию каждой картинки.
 	let identicalCards = cardsCollection[type].map((item) => ({ ...item }))
 
@@ -117,7 +120,7 @@ const getCards = (type: number) => {
 
 // создадим константу для списка типов игры
 // каждый элемент содержит название набора данных и подпись для кнопки
-const gameTypes = [
+const gameTypes: GameType[] = [
 	{ type: 'cats', text: 'Котики' },
 	{ type: 'parrots', text: 'Попугаи' },
 	{ type: 'forKids', text: 'Для детей' },
@@ -125,6 +128,6 @@ const gameTypes = [
 
 const randomized = false
 
-export type { Data };
+export type { Data, Result, GameType };
 
 export { cats, parrots, forKids, cardsCollection, results, getCards, gameTypes, randomized };
