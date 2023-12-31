@@ -127,3 +127,5 @@ const timeOut = 900;
 const randomized = false
 
 export type { Data };
+
+export { cats, parrots, forKids, cardsCollection, results, getCards, gameTypes, timeOut, randomized };
