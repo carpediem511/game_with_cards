@@ -13,6 +13,7 @@
 		"react-router-dom": "^6.21.1",
 		"react-scripts": "5.0.1",
 		"typescript": "^4.4.2",
+		"uuid4": "^2.0.3",
 		"yarn": "^1.22.19"
 	},
 	"scripts": {
@@ -38,5 +39,8 @@
 			"last 1 firefox version",
 			"last 1 safari version"
 		]
+	},
+	"devDependencies": {
+		"@types/uuid4": "^2.0.3"
 	}
 }
