@@ -14,8 +14,6 @@ type Props = {
 
 const Card = ({ url, description, id, isFinished, animationDuration, transform, onCardClick }: Props) => {
 
-
-
 	const backImageUrl = "/img/back-cats.svg"
 
 	const [isOpenCard, setIsOpenCard] = useState<boolean>(false)
@@ -23,9 +21,13 @@ const Card = ({ url, description, id, isFinished, animationDuration, transform, 
 	const handleClick = () => {
 		// Передаем идентификатор карточки родительскому компоненту в колбэке.
 		// Родительский компонент обновит свое состояние и карточка получит его в параметре.
+		// Если карточка уже открыта или угадана, игнорируем клик
+		if (isOpenCard || isFinished) {
+			return;
+		}
 		onCardClick(id);
 		// Обновляем состояние открытости карточки
-		setIsOpenCard(true);
+		setIsOpenCard(prevState => !prevState)
 
 	};
 

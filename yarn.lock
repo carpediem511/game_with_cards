@@ -1258,6 +1258,18 @@
   resolved "https://registry.yarnpkg.com/@csstools/selector-specificity/-/selector-specificity-2.2.0.tgz#2cbcf822bf3764c9658c4d2e568bd0c0cb748016"
   integrity sha512-+OJ9konv95ClSTOJCmMZqpd5+YGsB2S+x6w3E1oaM8UuR5j8nTNHYSz8c9BEPGDOCMQYIEEGlVPj/VY64iTbGw==
 
+"@dubaua/get-declension@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@dubaua/get-declension/-/get-declension-1.0.2.tgz#5c34ffc84d7f4d6da06eef2e34aa4b4ef006400f"
+  integrity sha512-r2apBH6Hp85ujwWflTiiw5hFrfwmmLL62eMH+rZ1ZWTwoUFoLkxffrHSIBfLOOPSehKX1xT1AI90vPyiANnJIQ==
+  dependencies:
+    "@dubaua/merge-options" "^2.0.0"
+
+"@dubaua/merge-options@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@dubaua/merge-options/-/merge-options-2.0.0.tgz#60a8060e4cc5d2681d7f56b716f766de6ff6217f"
+  integrity sha512-czHp7oyLNAzRrjZyZ+sb/Vh14bGoOFa/nIdrRDS5n90ChvLo2quaTuMOBPe2/gowXkLMoazaamNowKLVhdHRuQ==
+
 "@eslint-community/eslint-utils@^4.2.0":
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/@eslint-community/eslint-utils/-/eslint-utils-4.4.0.tgz#a23514e8fb9af1269d5f7788aa556798d61c6b59"
