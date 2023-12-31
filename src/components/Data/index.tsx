@@ -123,9 +123,8 @@ const gameTypes = [
 	{ type: 'forKids', text: 'Для детей' },
 ];
 
-const timeOut = 900;
 const randomized = false
 
 export type { Data };
 
-export { cats, parrots, forKids, cardsCollection, results, getCards, gameTypes, timeOut, randomized };
+export { cats, parrots, forKids, cardsCollection, results, getCards, gameTypes, randomized };
