@@ -1,20 +1,19 @@
 import uuid4 from "uuid4";
 
-type Data = {
+type TypeForGetCard = {
 	id: string
 	url: string
 	description: string
 }
 
-type Result = { name: string; steps: string };
-type GameType = { type: string; text: string };
-const randomized = false
+type TypeForResultsTable = { name: string; steps: string };
+type TypeForGameTheme = { type: string; text: string };
 
 // карточки сгруппированы по темам картинок
 // в наборах карточки указаны в одном экземпляре
 // парные карточки нужно сгенерировать
 
-const cats: Data[] = [{
+const cats: TypeForGetCard[] = [{
 	id: uuid4(),
 	url: '/img/cats/cat1.jpg',
 	description: 'red cat and bubbles',
@@ -40,7 +39,7 @@ const cats: Data[] = [{
 	description: 'british cat',
 }];
 
-const parrots: Data[] = [{
+const parrots: TypeForGetCard[] = [{
 	id: uuid4(),
 	url: '/img/parrots/parrot1.jpg',
 	description: 'ara parrot',
@@ -66,7 +65,7 @@ const parrots: Data[] = [{
 	description: 'lovebirds',
 }];
 
-const forKids: Data[] = [{
+const forKids: TypeForGetCard[] = [{
 	id: uuid4(),
 	url: '/img/forKids/kitten1.jpg',
 	description: 'programmer cat',
@@ -94,7 +93,7 @@ const forKids: Data[] = [{
 
 const cardsCollection = [cats, parrots, forKids]
 
-const results: Result[] = [
+const resultsTable: TypeForResultsTable[] = [
 	{ name: "Мальвина", steps: '5' },
 	{ name: "Дмитрий", steps: '3' },
 	{ name: "Александр", steps: '2' },
@@ -105,29 +104,28 @@ const results: Result[] = [
 
 // функция для доступа к данным из приложения
 // принимает в параметре название набора данных
-const getCards = (type: number): Data[] => {
+const getCards = (type: number) => {
 	// Берем набор картинок по индексу и делаем копию каждой картинки.
-	let identicalCards = cardsCollection[type].map((item) => ({
-		// для каждого объекта создаем его копию оператором spread
-		// и перезаписываем идентификатор, добавляя произвольное значение
-		...item, id: `${item.id}-1`,
-	}));
+	let identicalCards = cardsCollection[type].map((item) => ({ ...item }))
+
 	// Теперь соединяем оригинальные картинки с их копиями
 	const mergedCards = [...cardsCollection[type], ...identicalCards]
 
-	return randomized ? mergedCards.sort(() => 0.5 - Math.random()) : mergedCards;
+	// Перемешиваем все картинки
+	mergedCards.sort(() => 0.5 - Math.random())
+
+	// Возвращаем готовый список картинок для игры
+	return mergedCards
 }
 
 // создадим константу для списка типов игры
 // каждый элемент содержит название набора данных и подпись для кнопки
-const gameTypes: GameType[] = [
+const gameThemes: TypeForGameTheme[] = [
 	{ type: 'cats', text: 'Котики' },
 	{ type: 'parrots', text: 'Попугаи' },
 	{ type: 'forKids', text: 'Для детей' },
 ];
 
+export type { TypeForGetCard, TypeForResultsTable, TypeForGameTheme };
 
-
-export type { Data, Result, GameType };
-
-export { cats, parrots, forKids, cardsCollection, results, getCards, gameTypes, randomized };
+export { cats, parrots, forKids, cardsCollection, resultsTable, getCards, gameThemes };
