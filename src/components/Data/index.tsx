@@ -8,6 +8,7 @@ type Data = {
 
 type Result = { name: string; steps: string };
 type GameType = { type: string; text: string };
+const randomized = false
 
 // карточки сгруппированы по темам картинок
 // в наборах карточки указаны в одном экземпляре
@@ -106,16 +107,15 @@ const results: Result[] = [
 // принимает в параметре название набора данных
 const getCards = (type: number): Data[] => {
 	// Берем набор картинок по индексу и делаем копию каждой картинки.
-	let identicalCards = cardsCollection[type].map((item) => ({ ...item }))
-
+	let identicalCards = cardsCollection[type].map((item) => ({
+		// для каждого объекта создаем его копию оператором spread
+		// и перезаписываем идентификатор, добавляя произвольное значение
+		...item, id: `${item.id}-1`,
+	}));
 	// Теперь соединяем оригинальные картинки с их копиями
 	const mergedCards = [...cardsCollection[type], ...identicalCards]
 
-	// Перемешиваем все картинки
-	mergedCards.sort(() => 0.5 - Math.random())
-
-	// Возвращаем готовый список картинок для игры
-	return mergedCards
+	return randomized ? mergedCards.sort(() => 0.5 - Math.random()) : mergedCards;
 }
 
 // создадим константу для списка типов игры
@@ -126,7 +126,7 @@ const gameTypes: GameType[] = [
 	{ type: 'forKids', text: 'Для детей' },
 ];
 
-const randomized = false
+
 
 export type { Data, Result, GameType };
 
