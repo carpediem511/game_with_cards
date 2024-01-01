@@ -3,17 +3,16 @@ import { gameThemes, TypeForGameTheme } from "../Data"
 import { useState } from "react";
 
 type StartProps = {
-	setGameTheme: (theme: TypeForGameTheme) => void;
+	setGameTheme: (theme: TypeForGameTheme | null) => void;
 }
 
 const StartPage = ({ setGameTheme }: StartProps) => {
 
 	const navigate = useNavigate()
-	const [chooseTheme, setChooseTheme] = useState<TypeForGameTheme | null>(null)
+	const [selectedTheme, setSelectedTheme] = useState<TypeForGameTheme | null>(null)
 
 	const handleStartGame = (theme: TypeForGameTheme) => {
-		console.log("Выбранная тема:", chooseTheme);
-		setChooseTheme(theme);
+		setSelectedTheme(theme);
 		setGameTheme(theme);
 		navigate(`/game/${theme.type}`)
 	}
@@ -34,14 +33,14 @@ const StartPage = ({ setGameTheme }: StartProps) => {
 			<div>
 				<h3>Выберите тему игры:</h3>
 				{gameThemes.map(({ type, text }) => (
-					<button key={type}
+					<button
+						key={type}
 						className={`ico-button ico-button-${type}`}
 						onClick={() => handleStartGame({ type, text })}>
 						{text}
 					</button>
 				))}
 			</div>
-
 		</section >
 	)
 }
