@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { TypeForGameTheme, TypeForGetCard, TypeForResultsTable, getCards } from '../Data';
+import { TypeForGameTheme, TypeForResultsTable } from '../Data';
 import './../../index.css';
 import StartPage from '../StartPage';
 import GamePage from '../GamePage';
@@ -16,7 +16,7 @@ function App({ resultsTable }: AppProps) {
 		<>
 			<Routes>
 				<Route path='/' element={<StartPage setGameTheme={setGameTheme} />} />
-				<Route path='/game/:type' element={<GamePage gameTheme={gameTheme} />} />
+				<Route path='/game/:type' element={<GamePage />} />
 				{/*	<Route path='/results' element={<ResultsPage />} />*/}
 			</Routes>
 		</>
