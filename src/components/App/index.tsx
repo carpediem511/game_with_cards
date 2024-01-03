@@ -10,14 +10,14 @@ type AppProps = { resultsTable: TypeForResultsTable[] }
 
 function App({ resultsTable }: AppProps) {
 
-	const [gameTheme, setGameTheme] = useState<TypeForGameTheme | null>(null)
+
 
 	return (
 		<>
 			<Routes>
-				<Route path='/' element={<StartPage setGameTheme={setGameTheme} />} />
+				<Route path='/' element={<StartPage />} />
 				<Route path='/game/:type' element={<GamePage />} />
-				{/*	<Route path='/results' element={<ResultsPage />} />*/}
+				<Route path='/results' element={<ResultsPage />} />
 			</Routes>
 		</>
 	)

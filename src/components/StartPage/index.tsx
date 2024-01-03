@@ -2,18 +2,13 @@ import { useNavigate } from "react-router-dom";
 import { gameThemes, TypeForGameTheme } from "../Data"
 import { useState } from "react";
 
-type StartProps = {
-	setGameTheme: (theme: TypeForGameTheme | null) => void;
-}
-
-const StartPage = ({ setGameTheme }: StartProps) => {
+const StartPage = () => {
 
 	const navigate = useNavigate()
 	const [selectedTheme, setSelectedTheme] = useState<TypeForGameTheme | null>(null)
 
 	const handleStartGame = (theme: TypeForGameTheme) => {
 		setSelectedTheme(theme);
-		setGameTheme(theme);
 		navigate(`/game/${theme.type}`)
 	}
 
