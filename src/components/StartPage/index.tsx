@@ -1,24 +1,24 @@
 import { useNavigate } from "react-router-dom";
 import { gameThemes, TypeForGameTheme } from "../Data"
 import { useState } from "react";
-/*
+
 type StartProps = {
 	setGameTheme: (theme: TypeForGameTheme | null) => void;
-}*/
+}
 
-const StartPage = () => {
-	/*
-		const navigate = useNavigate()
-		const [selectedTheme, setSelectedTheme] = useState<TypeForGameTheme | null>(null)
-	
-		const handleStartGame = (theme: TypeForGameTheme) => {
-			setSelectedTheme(theme);
-			setGameTheme(theme);
-			navigate(`/game/${theme.type}`)
-		}*/
+const StartPage = ({ setGameTheme }: StartProps) => {
+
+	const navigate = useNavigate()
+	const [selectedTheme, setSelectedTheme] = useState<TypeForGameTheme | null>(null)
+
+	const handleStartGame = (theme: TypeForGameTheme) => {
+		setSelectedTheme(theme);
+		setGameTheme(theme);
+		navigate(`/game/${theme.type}`)
+	}
 
 	return (
-		{/*<section className="rules container">
+		<section className="rules container">
 			<h2>Добро пожаловать!</h2>
 			<p>Мозаика памяти — игра для тренировки визуальной памяти</p>
 			<div className="rules-panel">
@@ -41,7 +41,7 @@ const StartPage = () => {
 					</button>
 				))}
 			</div>
-		</section >*/}
+		</section >
 	)
 }
 
