@@ -2,14 +2,14 @@ import { useNavigate } from "react-router-dom";
 import { gameThemes, TypeForGameTheme } from "../Data"
 import { useState } from "react";
 
-const StartPage = () => {
 
-	const navigate = useNavigate()
+const StartPage = () => {
 	const [selectedTheme, setSelectedTheme] = useState<TypeForGameTheme | null>(null)
+	const navigate = useNavigate()
 
 	const handleStartGame = (theme: TypeForGameTheme) => {
 		setSelectedTheme(theme);
-		navigate(`/game/${theme.type}`)
+		navigate(`/game/${theme.type}`);
 	}
 
 	return (
@@ -31,7 +31,7 @@ const StartPage = () => {
 					<button
 						key={type}
 						className={`ico-button ico-button-${type}`}
-						onClick={() => handleStartGame({ type, text })}>
+						onClick={() => handleStartGame({ type, text: text })}>
 						{text}
 					</button>
 				))}

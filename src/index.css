@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --animation-duration: 0.8s;
 }
@@ -250,6 +254,7 @@ body {
   border-radius: 5px;
   transform: rotateY(180deg);
   backface-visibility: hidden;
+  width: inherit
 }
 
 /* Рубашка */
@@ -270,11 +275,11 @@ body {
 .card::before {
   content: "";
   grid-area: 1 / 1 / 2 / 2;
-  width: 204px;
+  width: -webkit-fill-available;
   height: 144px;
   border-radius: 5px;
-  background-color: rgba(140, 174, 200, 0.6);
-  background-image: url("../public/img/check.svg");
+  background-color: rgba(113, 141, 161, 0.6);
+  background-image: url("../public/img/check.png");
   background-repeat: no-repeat;
   background-position: center;
   opacity: 0;
@@ -440,3 +445,4 @@ body {
 .result .button {
   width: 160px;
 }
+
