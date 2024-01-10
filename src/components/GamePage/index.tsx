@@ -14,7 +14,7 @@ const GamePage = ({ newGameOver, stepsCount, setStepsCount }: GameProps) => {
 	const [finishedCards, setFinishedCards] = useState<string[]>([]);
 	const [openedCards, setOpenedCards] = useState<string[]>([]);
 	const [progress, setProgress] = useState<number>(0);
-	const [maxAttempts, setMaxAttempts] = useState<number>(6);
+	const [maxAttempts, setMaxAttempts] = useState<number>(7);
 	const [cards, setCards] = useState<TypeForCard[]>([]);
 
 	const { setUserCount } = useContext(userContext) || {
