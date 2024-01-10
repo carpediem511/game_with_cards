@@ -36,8 +36,9 @@ body {
   font-size: 20px;
   line-height: 28px;
   color: #333333;
-  background: url("/public/img/clouds.svg") no-repeat top 40px center,
-      linear-gradient(180deg, #c2e5fe 0%, #ffffff 50%) no-repeat;
+  background:
+    url("/public/img/clouds.svg") no-repeat top 40px center,
+    linear-gradient(180deg, #c2e5fe 0%, #ffffff 50%) no-repeat;
 }
 
 .container {
@@ -222,7 +223,7 @@ body {
   margin: 0;
   padding: 0;
   list-style: none;
-  perspective: 1000px; 
+  perspective: 1000px;
   --theme-back: url("../public/img/back-cats.svg");
 }
 
@@ -254,7 +255,7 @@ body {
   border-radius: 5px;
   transform: rotateY(180deg);
   backface-visibility: hidden;
-  width: inherit
+  width: inherit;
 }
 
 /* Рубашка */
@@ -324,7 +325,8 @@ body {
   pointer-events: auto;
   /* visibility: hidden; */
   /* opacity: 0; */
-  animation: fadeIn calc(var(--animation-duration) + 0.1s) calc(2 * var(--animation-duration)) both;
+  animation: fadeIn calc(var(--animation-duration) + 0.1s)
+    calc(2 * var(--animation-duration)) both;
 }
 
 @keyframes fadeIn {
@@ -414,7 +416,7 @@ body {
 
 .result-table-row {
   display: grid;
-  grid-template-columns: 120px 260px 140px;
+  grid-template-columns: 120px 260px 140px 120px;
   align-items: center;
 }
 
@@ -445,4 +447,3 @@ body {
 .result .button {
   width: 160px;
 }
-
