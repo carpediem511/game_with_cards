@@ -122,26 +122,6 @@ const resultsTable: TypeForResultsTable[] = [
   { name: "Павел", steps: 18, pairsCount: 4 },
 ];
 
-let random = false;
-// функция для доступа к данным из приложения
-// принимает в параметре название набора данных
-const getCards = (type: string) => {
-  const selectedTheme = cardsCollection[type];
-
-  // Функция для генерации дубликатов карточек
-  const generateIdenticalCards = (cards: TypeForCard[]) => {
-    return cards.map((item) => ({
-      ...item,
-      id: `${item.id}-1`,
-    }));
-  };
-
-  const identicalCards = generateIdenticalCards(selectedTheme);
-  const mergedCards = [...selectedTheme, ...identicalCards];
-
-  return random ? mergedCards.sort(() => 0.5 - Math.random()) : mergedCards;
-};
-
 // создадим константу для списка типов игры
 // каждый элемент содержит название набора данных и подпись для кнопки
 const gameThemes: TypeForGameTheme[] = [
@@ -151,12 +131,4 @@ const gameThemes: TypeForGameTheme[] = [
 ];
 
 export type { TypeForResultsTable, TypeForGameTheme, TypeForCard };
-export {
-  cats,
-  parrots,
-  forKids,
-  cardsCollection,
-  resultsTable,
-  getCards,
-  gameThemes,
-};
+export { cats, parrots, forKids, cardsCollection, resultsTable, gameThemes };
